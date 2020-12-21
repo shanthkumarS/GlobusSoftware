@@ -1,0 +1,172 @@
+{
+    "data": {
+        "salary" : 25000,
+        "working_days" : 23,
+        "office_in_time" : "9 AM",
+        "office_out_time" : "6 PM",
+        "attendances" : 
+        [
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "01-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "02-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "03-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "04-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "07-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "08-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "09-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "10-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "11-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "14-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "15-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "16-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "17-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "18-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "21-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "22-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "23-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "24-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "25-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "28-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "29-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "30-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            },
+            {
+                "id": "1",
+                "employee_id": "1",
+                "date": "31-12-2020",
+                "in_time": "09:00",
+                "out_time": "18:00"
+            }
+        ]
+    }
+}
