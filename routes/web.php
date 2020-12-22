@@ -34,6 +34,8 @@ Route::prefix('admin')->group(function () {
         Route::get('post/list', [PostController::class, 'index'])->name('admin.posts.list');
         
         Route::delete('/logout', [AdminLoginController::class, 'destroy'])->name('admin.logout');
+
+        Route::get('/post/banned/{postId}', [PostController::class, 'bannedUsers'])->name('banned.users');
     
     });
 
@@ -44,6 +46,8 @@ Route::prefix('admin')->group(function () {
         })->name('admin.login');
 
         Route::post('/authenticate', [AdminLoginController::class, 'store'])->name('admin.authenticate');
+
+        Route::post('', []); 
     });
 });
 

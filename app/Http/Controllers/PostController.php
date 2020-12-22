@@ -9,7 +9,9 @@ use Illuminate\Http\Response;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 use App\Models\Post;
+use App\Models\Banned;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View as ViewView;
 
 class PostController extends Controller
 {
@@ -30,7 +32,8 @@ class PostController extends Controller
      */
     public function list()
     {
-        return view('post.posts-list', ['posts' => Post::all()]);
+        $posts = Post::all()->where('user_id', Auth::user()->id);
+        return view('post.posts-list', ['posts' => $posts]);
     }
 
     /**
@@ -121,5 +124,17 @@ class PostController extends Controller
     public function destroy($id)
     {
         return Post::find($id)->delete();
+    }
+
+    /**
+     * @param int $userId
+     * @param int $postId
+     * 
+     * @return View
+     */
+    public function bannedUsers($postId)
+    {
+        $bannedUsers = Banned::all()->where('post_id', $postId);
+        return view('post.banned-users', ['bannedUsers' => $bannedUsers]);
     }
 }

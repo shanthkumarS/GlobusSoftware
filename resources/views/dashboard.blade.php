@@ -1,7 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ dd(Auth::user()->user) }}
+           @auth('admin')
+                {{ __('admin') }}
+           @endauth
+           @auth('web')
+                {{ Auth::user()->name }}
+           @endauth
         </h2>
     </x-slot>
 
@@ -9,6 +14,15 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($posts as $post)
             <div class="m-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                @auth('admin')
+                    <div class="flex items-center justify-end mt-4">
+                            <a href="admin/post/banned/{{ $post->id }}" >
+                                <x-button class="ml-4">
+                                    {{ __('Banned Users') }}
+                                </x-button>
+                            </a>
+                    </div>
+                @endauth
                 <div class="p-20 bg-white border-b border-gray-200">
                     <div class="container">
                         <h3 class="text-primary">{{ $post->name }}</h3>

@@ -5,9 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Banned extends Model
 {
     use HasFactory;
+
+    public $table = 'banned';
+
+    protected $fillable = [
+        'user_id',
+        'post_id'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
