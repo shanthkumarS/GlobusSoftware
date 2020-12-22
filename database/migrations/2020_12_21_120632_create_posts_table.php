@@ -1,11 +1,10 @@
 <?php
 
-use Carbon\Traits\Timestamp;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttendanceTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +13,12 @@ class CreateAttendanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('attendance', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->smallInteger('user_id');
-            $table->date('date');
-            $table->time('logged_in');
-            $table->time('logged_out');
+            $table->integer('user_id');
+            $table->string('name');
+            $table->string('content', 1000);
+            $table->timestamps();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateAttendanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendance');
+        Schema::dropIfExists('posts');
     }
 }

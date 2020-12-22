@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const ADMIN_DASHBOARD = '/admin/dashboard';
+    public const ADMIN_DASHBOARD = '/dashboard';
     
     /**
      * The path to the "home" route for your application.
@@ -35,7 +35,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const GUARD_DEFAULT_PAGE = ['web' => '/dashboard', 'admin' => '/admin/dashboard'];
+    public const GUARD_DEFAULT_PAGE = ['web' => self::HOME, 'admin' => self::ADMIN_DASHBOARD];
 
     /**
      * The controller namespace for the application.

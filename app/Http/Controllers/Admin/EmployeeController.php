@@ -18,7 +18,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard', ['users' => User::all()]);
+        return view('admin.users-list', ['users' => User::all()]);
     }
 
     /**
@@ -97,7 +97,7 @@ class EmployeeController extends Controller
     
         $user->save();
 
-        return redirect(route('admin.dashboard.index'))->with('success','Write here your messege');;
+        return redirect(route('list.users'))->with('success','Write here your messege');;
     }
 
     /**
@@ -118,15 +118,15 @@ class EmployeeController extends Controller
     {
         $csvHeader = $this->setFileHeader();
 
-        $list = User::all()->toArray();
+        $users = User::all()->toArray();
 
-        array_unshift($list, array_keys($list[0]));
+        array_unshift($users, array_keys($users[0]));
 
-        $callback = function() use ($list) 
+        $callback = function() use ($users) 
         {
             $FH = fopen('php://output', 'w');
-            foreach ($list as $row) { 
-                fputcsv($FH, $row);
+            foreach ($users as $user) { 
+                fputcsv($FH, $user);
             }
             fclose($FH);
         };

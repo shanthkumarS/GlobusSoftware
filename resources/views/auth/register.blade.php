@@ -9,7 +9,7 @@
             @if (! isset($user->id))
                 <form method="POST" action="/register">
             @else
-                <form method="PUT" action="/employee/update/{!! $user->id !!}">
+                <form method="POST" action="/employee/update/{!! $user->id !!}">
             @endif
         
             @csrf

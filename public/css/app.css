@@ -75,6 +75,26 @@ body {
   font-size: 1em;
 }
 
+.text-area {
+  height: 100px;
+  border: 1px solid #ccc;
+}
+
+.article-container {
+  width: 60%;
+  margin-left: 20%;
+  margin-top:10px;
+}
+
+
+.text-md {
+  font-size: 12px;
+}
+
+.text-sm {
+  font-size: 10px;
+}
+
 /*
 Grouping content
 ================

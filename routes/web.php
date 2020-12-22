@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\EmployeeController;
-use App\Models\Admin;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,22 +17,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::prefix('admin')->group(function () {
 
     Route::middleware(['auth:admin'])->group(function () {
         
-        Route::get('/dashboard', [EmployeeController::class, 'index'])->name('admin.dashboard.index');
+        Route::get('users/list', [EmployeeController::class, 'index'])->name('list.users');
+
+        Route::get('post/list', [PostController::class, 'index'])->name('admin.posts.list');
         
         Route::delete('/logout', [AdminLoginController::class, 'destroy'])->name('admin.logout');
     
@@ -44,20 +45,63 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/authenticate', [AdminLoginController::class, 'store'])->name('admin.authenticate');
     });
-
-});
-
-Route::middleware(['auth:admin'])->group(function () {
-    
-    Route::get('/employee/show/{id}', [EmployeeController::class, 'show'])->name('employee.show');
-    
-    Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
-    
-    Route::post('/employee/update/{id}', [EmployeeController::class, 'update'])->name('employee.update');
-    
-    Route::delete('/employee/delete/{id}', [EmployeeController::class, 'destroy'])->name('employee.delete');
-    
-    Route::get('/employee/report/dowload', [EmployeeController::class, 'downloads'])->name('employee.export');
 });
 
 
+Route::middleware(['auth:web'])->group(function () {
+
+    Route::get('post/list', [PostController::class, 'list'])->name('user.posts.list');
+    
+    Route::post('post/create', [PostController::class, 'create'])->name('post.create');
+
+    Route::get('post/create', [PostController::class, 'create'])->name('post.create');
+
+    Route::post('post/store/{user_id}', [PostController::class, 'store'])->name('post.store');
+
+    Route::post('comment/add/{userId}/{postId}', [CommentController::class, 'add'])->name('comment.add');
+
+});
+
+
+Route::middleware(['auth:web,admin'])->group(function () {
+
+    Route::prefix('employee')->group(function () {
+
+        Route::get('/show/{id}', [EmployeeController::class, 'show'])->name('employee.show');
+
+        Route::get('/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
+        
+        Route::post('/update/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+        
+        Route::delete('/delete/{id}', [EmployeeController::class, 'destroy'])->name('employee.delete');
+        
+        Route::get('/report/dowload', [EmployeeController::class, 'downloads'])->name('employee.export');
+    
+    });
+
+    Route::prefix('post')->group(function () {
+        
+        Route::get('/show/{id}', [PostController::class, 'show'])->name('post.show');
+    
+        Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+        
+        Route::post('/update/{id}', [PostController::class, 'update'])->name('post.update');
+        
+        Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.delete');
+
+    });
+
+    Route::prefix('comment')->group(function () {
+
+        Route::get('/show/{id}', [CommentsController::class, 'show'])->name('comment.show');
+    
+        Route::get('/edit/{id}', [CommentsController::class, 'edit'])->name('comment.edit');
+        
+        Route::post('/update/{id}', [CommentsController::class, 'update'])->name('comment.update');
+        
+        Route::delete('/delete/{id}', [CommentsController::class, 'destroy'])->name('comment.delete');
+        
+        Route::get('/report/dowload', [CommentsController::class, 'downloads'])->name('comment.export');
+
+    });
+});

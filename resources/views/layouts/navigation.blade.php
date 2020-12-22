@@ -5,17 +5,36 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('user.posts.list') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('user.posts.list')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                @auth('web')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('user.posts.list')" :active="request()->routeIs('user.posts.list')">
+                            {{ __('Myposts') }}
+                        </x-nav-link>
+                    </div>
+                @endauth
+                @auth('admin')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('list.users')" :active="request()->routeIs('admin.posts.list')">
+                            {{ __('') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('admin.posts.list')" :active="request()->routeIs('admin.posts.list')">
+                            {{ __('') }}
+                        </x-nav-link>
+                    </div>
+                @endauth
             </div>
 
             <!-- Settings Dropdown -->
@@ -23,8 +42,9 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
-
+                            <div>
+                                {{Auth::user()->name}}
+                            </div>
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -37,7 +57,7 @@
                         if(Auth::guard('admin')->check()) {
                            $logout_url = '/admin/logout';
                         }
-                        $logout_url = 'logout';
+                        $logout_url = '/logout';
                     ?>
                     <x-slot name="content">
                         <!-- Authentication -->
@@ -69,7 +89,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('admin.posts.list')" :active="request()->routeIs('admin.posts.list')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
@@ -84,8 +104,8 @@
                 </div>
 
                 <div class="ml-3">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-800"></div>
+                    <div class="font-medium text-sm text-gray-500"></div>
                 </div>
             </div>
 

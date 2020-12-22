@@ -26,7 +26,7 @@ class AdminLoginController extends Controller
      */
     public function show()
     {
-        return view('admin.dashboard', ['guard' => 'admin']);
+        return view('admin.user-list', ['guard' => 'admin']);
     }
 
     /**

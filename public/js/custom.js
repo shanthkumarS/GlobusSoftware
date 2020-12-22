@@ -13,15 +13,45 @@ $(function() {
             success: function (response)
             {
                 if(response) {
-                    $('#delete-error').hide();
-                    $('tr#' + response).remove();
+                    $('#user-delete-error').hide();
+                    $('tr#user-' + response).remove();
                 } else {
-                    $('#delete-error').hide()
+                    $('#user-delete-error').hide()
                 }   
             },
             error: function(xhr) {
-                $('#delete-error').show();
+                $('#user-delete-error').show();
             }
         });
     });
+
+});
+
+$(function() {
+    $(".deletePost").click(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax(
+        {
+            url: window.location.origin + '/post/delete/' + this.id,
+            type: 'delete',
+            dataType: "JSON",
+            success: function (response)
+            {
+                if(response) {
+                    $('#post-delete-error').hide();
+                    $('tr#post-' + response).remove();
+                } else {
+                    $('#post-delete-error').hide()
+                }   
+            },
+            error: function(xhr) {
+                $('#post-delete-error').show();
+            }
+        });
+    });
+
 });
