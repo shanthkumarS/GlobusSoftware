@@ -58,12 +58,13 @@
                     <?php
                         if(Auth::guard('admin')->check()) {
                            $logout_url = '/admin/logout';
+                        } else {
+                            $logout_url = '/logout';
                         }
-                        $logout_url = '/logout';
                     ?>
                     <x-slot name="content">
                         <!-- Authentication -->
-                        <form method="POST" action="{{ $logout_url }}">
+                        <form method="DELETE" action="{{ $logout_url }}">
                             @csrf
 
                             <x-dropdown-link :href="$logout_url"

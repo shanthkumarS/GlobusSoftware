@@ -48,11 +48,11 @@ class AdminLoginController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
-        $request->session()->invalidate();
+        $request->session()->flush();
 
-        $request->session()->regenerateToken();
+        $request->session()->regenerate();
 
         return redirect('/');
     }

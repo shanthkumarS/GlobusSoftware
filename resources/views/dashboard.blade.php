@@ -9,7 +9,7 @@
            @endauth
         </h2>
     </x-slot>
-
+    @auth
     <div class="py-12 article-container">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($posts as $post)
@@ -59,4 +59,5 @@
             @endforeach
         </div>
     </div>
+    @endauth
 </x-app-layout>

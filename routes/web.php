@@ -23,8 +23,6 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 Route::prefix('admin')->group(function () {
 
     Route::middleware(['auth:admin'])->group(function () {
@@ -33,7 +31,7 @@ Route::prefix('admin')->group(function () {
 
         Route::get('post/list', [PostController::class, 'index'])->name('admin.posts.list');
         
-        Route::delete('/logout', [AdminLoginController::class, 'destroy'])->name('admin.logout');
+        Route::post('/logout', [AdminLoginController::class, 'destroy'])->name('admin.logout');
 
         Route::get('/post/banned/{postId}', [PostController::class, 'bannedUsers'])->name('banned.users');
     
@@ -108,4 +106,6 @@ Route::middleware(['auth:web,admin'])->group(function () {
         Route::get('/report/dowload', [CommentsController::class, 'downloads'])->name('comment.export');
 
     });
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
