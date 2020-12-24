@@ -64,7 +64,7 @@
                     ?>
                     <x-slot name="content">
                         <!-- Authentication -->
-                        <form method="DELETE" action="{{ $logout_url }}">
+                        <form method="POST" action="{{ $logout_url }}">
                             @csrf
 
                             <x-dropdown-link :href="$logout_url"

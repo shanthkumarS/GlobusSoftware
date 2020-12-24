@@ -31,7 +31,9 @@ Route::prefix('admin')->group(function () {
 
         Route::get('post/list', [PostController::class, 'index'])->name('admin.posts.list');
         
-        Route::post('/logout', [AdminLoginController::class, 'destroy'])->name('admin.logout');
+        Route::post('/post', [AdminLoginController::class, 'destroy'])->name('admin.logout');
+
+        Route::post('/post', [AdminLoginController::class, 'destroy'])->name('admin.logout');
 
         Route::get('/post/banned/{postId}', [PostController::class, 'bannedUsers'])->name('banned.users');
     
