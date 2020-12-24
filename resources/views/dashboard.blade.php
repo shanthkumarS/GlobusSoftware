@@ -40,7 +40,7 @@
                     @endforeach
                     </div>
                     @auth('web')
-                        <form method="POST" action="comment/add/{{$user->id}}/{{$post->id}}">
+                        <form method="POST" action="comment/add/{{Auth::user()->id}}/{{$post->id}}">
                         @csrf
                         <div>
                             <x-input id="comment" class="block mt-1 w-full" type="text" name="comment" :value="old('comment')" />
